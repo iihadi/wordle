@@ -10,6 +10,7 @@ function Keyboard() {
 
 
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleKeyboard = useCallback((event) => {
     if (event.key === "Enter") {
       onEnter();
