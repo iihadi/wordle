@@ -4,7 +4,7 @@ import Board from "./components/Board";
 import GameOver from "./components/GameOver";
 import Keyboard from "./components/Keyboard";
 import { defaultBoard, generateWordSet } from "./components/Words";
-import Alert from 'react-bootstrap';
+
 
 
 export const AppContext = createContext();
@@ -24,9 +24,6 @@ function App() {
 
   const [correctWord, setCorrectWord] = useState("");
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setBoard(false);
-  const handleOpen = () => setBoard(true);
 
   useEffect(() => {
     generateWordSet().then((words) => {
