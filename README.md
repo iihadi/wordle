@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This project is based off Wordle (https://www.nytimes.com/games/wordle/index.html), it featured use of useEffect, useContext and useState extensively.
 
+Linked is a live demo: (https://home-5013336117.app-ionos.space/)
+
 ## Available Scripts
 
 In the project directory, you can run:
