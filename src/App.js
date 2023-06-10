@@ -4,6 +4,8 @@ import Board from "./components/Board";
 import GameOver from "./components/GameOver";
 import Keyboard from "./components/Keyboard";
 import { defaultBoard, generateWordSet } from "./components/Words";
+import Alert from 'react-bootstrap';
+
 
 export const AppContext = createContext();
 
@@ -14,16 +16,23 @@ function App() {
     letterPosition: 0,
   });
   const [wordSet, setWordSet] = useState(new Set());
-  const [disabledLetters, setDisabledLetters] =  useState([]);
-  const [gameOver, setGameOver] = useState({gameover: false, guessedCorrect: false});
+  const [disabledLetters, setDisabledLetters] = useState([]);
+  const [gameOver, setGameOver] = useState({
+    gameover: false,
+    guessedCorrect: false,
+  });
 
   const [correctWord, setCorrectWord] = useState("");
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setBoard(false);
+  const handleOpen = () => setBoard(true);
 
   useEffect(() => {
     generateWordSet().then((words) => {
       setWordSet(words.wordSet);
       setCorrectWord(words.todaysWord);
-      console.log(words.todaysWord); 
+      console.log(words.todaysWord);
     });
   }, []);
 
@@ -71,12 +80,12 @@ function App() {
       alert("Please enter a valid word");
     }
     if (currentWord.toLowerCase() === correctWord) {
-      setGameOver({gameOver: true, guessedCorrect: true});
+      setGameOver({ gameOver: true, guessedCorrect: true });
       return;
     }
 
     if (currentAttempt.attempt === 5) {
-      setGameOver({gameOver: true, guessedCorrect: false});
+      setGameOver({ gameOver: true, guessedCorrect: false });
     }
   };
 
@@ -95,15 +104,15 @@ function App() {
           onEnter,
           onDelete,
           correctWord,
-          disabledLetters, 
-          setDisabledLetters, 
-          gameOver, 
-          setGameOver
+          disabledLetters,
+          setDisabledLetters,
+          gameOver,
+          setGameOver,
         }}
       >
         <div className="game">
           <Board />
-          {gameOver.gameOver ? <GameOver/> : <Keyboard />}
+          {gameOver.gameOver ? <GameOver /> : <Keyboard />}
         </div>
       </AppContext.Provider>
     </div>
